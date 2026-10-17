@@ -104,7 +104,7 @@
                 </p>
             </div>
 
-            <!-- Info Cards Grid with 2x2 Highlights Layout -->
+            <!-- Info Cards Grid with 2x2 Highlights Dropdown Layout -->
             <div class="bg-[#0b101d]/85 backdrop-blur-xl border border-blue-900/40 rounded-3xl p-5 space-y-4 shadow-2xl">
                 <div class="grid grid-cols-2 gap-3 bg-[#111827]/60 p-3 rounded-2xl border border-blue-500/10">
                     <div>
@@ -120,39 +120,53 @@
                 <div class="space-y-2">
                     <span class="text-[10px] font-bold tracking-wider text-cyan-400 uppercase tracking-wider block">KEY COVERAGE & HIGHLIGHTS</span>
                     
-                    <!-- 2x2 Side-by-Side Grid Layout with equal heights -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs items-stretch">
-                        <!-- Card 1: Master Calculator Techniques (Yellow) -->
-                        <div class="bg-[#111827]/90 p-3.5 rounded-2xl border border-blue-500/20 space-y-1.5 flex flex-col justify-between h-full">
-                            <div class="font-bold text-yellow-400 flex items-center gap-2 text-xs">
-                                <span>⚡</span> Master Calculator Techniques
+                    <!-- 2x2 Side-by-Side Grid Layout with Dropdowns -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs items-start">
+                        
+                        <!-- Card 1: Master Calculator Techniques -->
+                        <details class="bg-[#111827]/90 rounded-2xl border border-blue-500/20 group overflow-hidden transition">
+                            <summary class="p-3.5 font-bold text-yellow-400 flex items-center justify-between cursor-pointer select-none text-xs">
+                                <span class="flex items-center gap-2"><span>⚡</span> Master Calculator Techniques</span>
+                                <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                            </summary>
+                            <div class="px-3.5 pb-3.5 pt-0 text-slate-300 text-[11px] leading-relaxed border-t border-blue-950/50 mt-1">
+                                Shortcuts for quick problem-solving.
                             </div>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">Shortcuts for quick problem-solving.</p>
-                        </div>
+                        </details>
 
                         <!-- Card 2: Numerical Differentiation & Integration -->
-                        <div class="bg-[#111827]/90 p-3.5 rounded-2xl border border-blue-500/20 space-y-1.5 flex flex-col justify-between h-full">
-                            <div class="font-bold text-slate-200 flex items-center gap-2 text-xs">
-                                <span>📊</span> Numerical Differentiation & Integration
+                        <details class="bg-[#111827]/90 rounded-2xl border border-blue-500/20 group overflow-hidden transition">
+                            <summary class="p-3.5 font-bold text-slate-200 flex items-center justify-between cursor-pointer select-none text-xs">
+                                <span class="flex items-center gap-2"><span>📊</span> Numerical Differentiation & Integration</span>
+                                <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                            </summary>
+                            <div class="px-3.5 pb-3.5 pt-0 text-slate-300 text-[11px] leading-relaxed border-t border-blue-950/50 mt-1">
+                                Forward/Backward/Centered approximations, Trapezoidal & Simpson's Rules, Richardson Extrapolation, and Gaussian Quadrature formulas.
                             </div>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">Forward/Backward/Centered approximations, Trapezoidal & Simpson's Rules, Richardson Extrapolation, and Gaussian Quadrature formulas.</p>
-                        </div>
+                        </details>
 
                         <!-- Card 3: ODEs (IVP & BVP) -->
-                        <div class="bg-[#111827]/90 p-3.5 rounded-2xl border border-blue-500/20 space-y-1.5 flex flex-col justify-between h-full">
-                            <div class="font-bold text-slate-200 flex items-center gap-2 text-xs">
-                                <span>📐</span> ODEs (IVP & BVP)
+                        <details class="bg-[#111827]/90 rounded-2xl border border-blue-500/20 group overflow-hidden transition">
+                            <summary class="p-3.5 font-bold text-slate-200 flex items-center justify-between cursor-pointer select-none text-xs">
+                                <span class="flex items-center gap-2"><span>📐</span> ODEs (IVP & BVP)</span>
+                                <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                            </summary>
+                            <div class="px-3.5 pb-3.5 pt-0 text-slate-300 text-[11px] leading-relaxed border-t border-blue-950/50 mt-1">
+                                Solving initial value problems, classical Runge-Kutta 4th Order, shooting techniques, and boundary value setups.
                             </div>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">Solving initial value problems, classical Runge-Kutta 4th Order, shooting techniques, and boundary value setups.</p>
-                        </div>
+                        </details>
 
                         <!-- Card 4: PDEs -->
-                        <div class="bg-[#111827]/90 p-3.5 rounded-2xl border border-blue-500/20 space-y-1.5 flex flex-col justify-between h-full">
-                            <div class="font-bold text-white flex items-center gap-2 text-xs">
-                                <span>📈</span> PDEs
+                        <details class="bg-[#111827]/90 rounded-2xl border border-blue-500/20 group overflow-hidden transition">
+                            <summary class="p-3.5 font-bold text-white flex items-center justify-between cursor-pointer select-none text-xs">
+                                <span class="flex items-center gap-2"><span>📈</span> PDEs</span>
+                                <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
+                            </summary>
+                            <div class="px-3.5 pb-3.5 pt-0 text-slate-300 text-[11px] leading-relaxed border-t border-blue-950/50 mt-1">
+                                Handling 1D Heat equations and grid-mesh setups using fully discretized finite difference methods.
                             </div>
-                            <p class="text-slate-300 text-[11px] leading-relaxed">Handling 1D Heat equations and grid-mesh setups using fully discretized finite difference methods.</p>
-                        </div>
+                        </details>
+
                     </div>
                 </div>
 
