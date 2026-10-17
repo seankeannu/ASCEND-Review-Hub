@@ -205,7 +205,7 @@
                 <div class="border-t border-blue-950/80 pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase block mb-0.5">Registration Fee</span>
-                        <span class="text-xs font-extrabold text-cyan-400">₱75.00 — GCash Payment</span>
+                        <span class="text-xs font-extrabold text-cyan-400">₱75.00 — GCash & GoTyme</span>
                     </div>
                     <div>
                         <span class="text-[10px] font-bold tracking-wider text-slate-400 uppercase block mb-0.5">Inclusions</span>
@@ -214,14 +214,17 @@
                 </div>
             </div>
 
-            <!-- Extra Instructions Box -->
-            <div class="bg-gradient-to-br from-blue-950/60 to-[#0b101d] border border-blue-500/25 rounded-2xl p-4 space-y-2 shadow-xl backdrop-blur-md">
+            <!-- Extra Instructions Box with QR Button -->
+            <div class="bg-gradient-to-br from-blue-950/60 to-[#0b101d] border border-blue-500/25 rounded-2xl p-4 space-y-3 shadow-xl backdrop-blur-md">
                 <h3 class="text-[11px] font-extrabold text-cyan-400 tracking-wider uppercase flex items-center gap-2">
-                    <span>💡</span> Payment Instructions via GCash
+                    <span>💡</span> Payment Instructions (GCash & GoTyme)
                 </h3>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                    Send exactly <strong class="text-white">₱75.00</strong> to GCash Account: <span class="text-cyan-300 font-mono font-bold bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-800/40">0912-345-6789</span> (Sean Keannu D.). Upload a clear screenshot of your receipt below to complete your slot verification.
+                    Send exactly <strong class="text-white">₱75.00</strong> to GCash: <span class="text-cyan-300 font-mono font-bold bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-800/40">0912-085-4603</span> (S.K.D.) or via GoTyme. Click the button below to view official QR codes, then upload your receipt screenshot.
                 </p>
+                <button onclick="openQrModal()" class="w-full bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/40 text-xs font-bold py-2.5 px-4 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-md">
+                    <span>📱</span> View Payment QR Codes (GCash & GoTyme)
+                </button>
             </div>
         </div>
 
@@ -245,11 +248,11 @@
                         </div>
                     </div>
 
-                    <!-- Lead Host Card Component -->
+                    <!-- Lead Host Card Component with User Photo -->
                     <div class="flex items-center justify-between bg-[#10172a]/90 rounded-2xl p-3 border border-blue-500/20 shadow-inner">
                         <div class="flex items-center gap-3">
                             <div class="relative">
-                                <!-- ILAGAY ANG SUPABASE STORAGE URL O HOSTED URL NG PHOTO MO DITO SA SRC -->
+                                <!-- TUTOR PHOTO -->
                                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" alt="Sean Keannu Dandan" class="w-11 h-11 rounded-full object-cover ring-2 ring-cyan-400/50 shadow-md">
                                 <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-cyan-400 rounded-full border-2 border-[#090d1a] flex items-center justify-center text-[7px] text-black font-black">✓</span>
                             </div>
@@ -298,12 +301,12 @@
 
                         <!-- Stylized Receipt Upload Dropzone -->
                         <div>
-                            <label class="block text-[10px] font-semibold tracking-wider text-slate-300 uppercase mb-1">Proof of GCash Payment (₱75)</label>
+                            <label class="block text-[10px] font-semibold tracking-wider text-slate-300 uppercase mb-1">Proof of Payment (₱75)</label>
                             <label for="receiptFile" class="group relative flex flex-col items-center justify-center w-full py-3.5 px-3 border-2 border-dashed border-blue-800/60 hover:border-cyan-400/70 bg-[#10172a]/70 hover:bg-[#10172a] rounded-xl cursor-pointer transition text-center">
                                 <input type="file" id="receiptFile" accept="image/*" required class="hidden" onchange="updateFileName(this)">
                                 <div class="flex items-center gap-2 text-cyan-400 text-xs font-semibold">
                                     <span class="text-sm">📎</span>
-                                    <span id="uploadLabelText">Click to attach GCash receipt screenshot</span>
+                                    <span id="uploadLabelText">Click to attach GCash/GoTyme receipt</span>
                                 </div>
                                 <span class="text-[9px] text-slate-400 mt-0.5">JPG, PNG, or Screenshot accepted</span>
                             </label>
@@ -358,6 +361,31 @@
         <p>&copy; 2026 ASCEND Review Center. All rights reserved.</p>
     </footer>
 
+    <!-- QR Codes Modal -->
+    <div id="qrModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+        <div class="bg-[#0b101d] border border-blue-500/30 w-full max-w-sm rounded-3xl p-6 space-y-4 text-center shadow-2xl">
+            <div class="flex justify-between items-center border-b border-blue-950 pb-3">
+                <h3 class="font-bold text-cyan-400 text-sm uppercase tracking-wider">Payment QR Codes</h3>
+                <button onclick="closeQrModal()" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+            
+            <div class="space-y-4 py-2">
+                <div class="bg-[#111827] p-3 rounded-2xl border border-blue-500/20">
+                    <p class="text-xs font-bold text-cyan-300 mb-2">GCash (0912-085-4603)</p>
+                    <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Gcash.jfif" alt="GCash QR" class="w-40 h-40 mx-auto rounded-xl border border-cyan-500/30 object-contain bg-white p-1">
+                </div>
+                <div class="bg-[#111827] p-3 rounded-2xl border border-blue-500/20">
+                    <p class="text-xs font-bold text-blue-300 mb-2">GoTyme Bank</p>
+                    <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Gotyme.jfif" alt="GoTyme QR" class="w-40 h-40 mx-auto rounded-xl border border-cyan-500/30 object-contain bg-white p-1">
+                </div>
+            </div>
+
+            <button onclick="closeQrModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-2.5 rounded-xl transition">
+                Close
+            </button>
+        </div>
+    </div>
+
     <!-- Admin Modal / Hidden Panel -->
     <div id="adminModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
         <div class="bg-[#0b101d] border border-blue-500/30 w-full max-w-lg rounded-3xl p-6 space-y-4 max-h-[85vh] flex flex-col shadow-2xl">
@@ -391,6 +419,14 @@
         const cardBody = document.getElementById('cardBody');
         const messageDiv = document.getElementById('message');
 
+        // QR Modal Controls
+        function openQrModal() {
+            document.getElementById('qrModal').classList.remove('hidden');
+        }
+        function closeQrModal() {
+            document.getElementById('qrModal').classList.add('hidden');
+        }
+
         // Dynamic Receipt Filename Display Updater
         function updateFileName(input) {
             const label = document.getElementById('uploadLabelText');
@@ -398,7 +434,7 @@
                 label.textContent = "Attached: " + input.files[0].name;
                 label.classList.add("text-cyan-300");
             } else {
-                label.textContent = "Click to attach GCash receipt screenshot";
+                label.textContent = "Click to attach GCash/GoTyme receipt";
                 label.classList.remove("text-cyan-300");
             }
         }
