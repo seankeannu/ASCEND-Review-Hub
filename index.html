@@ -381,8 +381,8 @@
 
     <script>
         // INSERT YOUR SUPABASE CREDENTIALS HERE
-        const SUPABASE_URL = 'https://owmdlhotwcjzkqounzjx.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_YFNdeE4SOirbm0GKtYjWcQ_6ShxF4ti';
+        const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+        const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 
         const { createClient } = supabase;
         const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -459,7 +459,7 @@
                 }]);
 
             if (dbError) {
-                messageDiv.classList.remove('hidden');
+                messageDiv.classList.min('hidden');
                 messageDiv.textContent = 'Database error: ' + dbError.message;
                 messageDiv.className = 'text-xs text-center font-semibold text-rose-400 mt-2';
                 submitBtn.disabled = false;
@@ -489,7 +489,7 @@
         // Admin View with Receipt Preview
         async function openAdminView() {
             const pin = prompt("Owner/Admin PIN:");
-            if (pin !== "Seanigang12") {
+            if (pin !== "1234") {
                 if (pin !== null) alert("Incorrect PIN!");
                 return;
             }
