@@ -148,7 +148,7 @@
                         <!-- Card 3: Ordinary Differential Equations (IVP and BVP) -->
                         <details class="bg-[#111827]/90 rounded-2xl border border-blue-500/20 group overflow-hidden transition">
                             <summary class="p-3.5 font-bold text-slate-200 flex items-center justify-between cursor-pointer select-none text-xs">
-                                <span class="flex items-center gap-2"><span>📐</span> Ordinary Differential Equations</span>
+                                <span class="flex items-center gap-2"><span>📐</span> Ordinary Differential Equations (IVP and BVP)</span>
                                 <span class="text-slate-400 group-open:rotate-180 transition-transform duration-200">▼</span>
                             </summary>
                             <div class="px-3.5 pb-3.5 pt-0 text-slate-300 text-[11px] leading-relaxed border-t border-blue-950/50 mt-1">
@@ -404,32 +404,62 @@
             }
         });
 
-        function openAdminView() {
-            const pin = prompt("Owner/Admin PIN:");
-            if (pin !== "1234") { if (pin !== null) alert("Incorrect PIN!"); return; }
-            document.getElementById('adminModal').classList.remove('hidden');
+        // SECURE ADMIN LOGIN VIA SUPABASE AUTHENTICATION
+        async function openAdminView() {
+            const email = prompt("Admin Email:");
+            if (!email) return;
+            const password = prompt("Admin Password:");
+            if (!password) return;
+
             const adminList = document.getElementById('adminList');
+            adminList.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">Authenticating...</p>';
+            document.getElementById('adminModal').classList.remove('hidden');
+
+            // Authenticate with Supabase Auth backend
+            const { data: authData, error: authError } = await _supabase.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (authError || !authData.user) {
+                adminList.innerHTML = `<p class="text-xs text-rose-400 text-center py-4">Access Denied: Invalid Admin Credentials</p>`;
+                return;
+            }
+
             adminList.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">Fetching data...</p>';
 
-            _supabase.from('bookings').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
-                if (error) { adminList.innerHTML = `<p class="text-xs text-rose-400 text-center">Error: ${error.message}</p>`; return; }
-                document.getElementById('totalBookingsText').textContent = `Total: ${data.length} students`;
-                if (data.length === 0) { adminList.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">No registrations yet.</p>'; return; }
-                let html = '';
-                data.forEach((item, index) => {
-                    html += `
-                        <div class="bg-[#111827] p-3 rounded-xl border border-blue-500/10 space-y-1.5">
-                            <div class="flex justify-between items-center text-xs">
-                                <span class="font-bold text-slate-200">${index + 1}. ${item.student_name} (${item.student_no})</span>
-                                <a href="${item.receipt_url}" target="_blank" class="text-cyan-400 underline font-medium">View Receipt</a>
-                            </div>
+            // Fetch bookings (Protected securely by Supabase RLS policies)
+            const { data, error } = await _supabase.from('bookings').select('*').order('created_at', { ascending: false });
+            
+            if (error) { 
+                adminList.innerHTML = `<p class="text-xs text-rose-400 text-center">Error: ${error.message}</p>`; 
+                return; 
+            }
+
+            document.getElementById('totalBookingsText').textContent = `Total: ${data.length} students`;
+            if (data.length === 0) { 
+                adminList.innerHTML = '<p class="text-xs text-slate-400 text-center py-4">No registrations yet.</p>'; 
+                return; 
+            }
+
+            let html = '';
+            data.forEach((item, index) => {
+                html += `
+                    <div class="bg-[#111827] p-3 rounded-xl border border-blue-500/10 space-y-1.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-slate-200">${index + 1}. ${item.student_name} (${item.student_no})</span>
+                            <a href="${item.receipt_url}" target="_blank" class="text-cyan-400 underline font-medium">View Receipt</a>
                         </div>
-                    `;
-                });
-                adminList.innerHTML = html;
+                    </div>
+                `;
             });
+            adminList.innerHTML = html;
         }
-        function closeAdminView() { document.getElementById('adminModal').classList.add('hidden'); }
+
+        function closeAdminView() { 
+            document.getElementById('adminModal').classList.add('hidden'); 
+            _supabase.auth.signOut(); // Securely log out the session when closing the modal
+        }
     </script>
 </body>
 </html>
