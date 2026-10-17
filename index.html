@@ -28,6 +28,11 @@
         .font-mono-code {
             font-family: 'Space Mono', monospace;
         }
+        /* Crisp High-Quality Image Rendering for Tutor Photo */
+        .crisp-tutor-img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
     </style>
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -98,7 +103,7 @@
                     <!-- Upward Arrow Shield -->
                     <path d="M 215,245 L 245,185 L 245,245 Z" fill="url(#navNeonAccent)" opacity="0.95" filter="url(#nav-subtle-glow)" />
                     <path d="M 385,245 L 355,185 L 355,245 Z" fill="url(#navNeonAccent)" opacity="0.95" filter="url(#nav-subtle-glow)" />
-                    <path d="M 300,32 L 440,165 L 365,165 L 365,250 L 235,250 L 235,165 L 160,165 Z" fill="url(#navArrowGrad)" stroke="url(#navCyberCyan)" stroke-width="5" filter="url(#nav-subtle-glow)" />
+                    <path d="M 300,32 L 440,165 L 365,165 L 365,250 L 235,250 L 235,165 L 160,165 Z" fill="url(#arrowGrad)" stroke="url(#navCyberCyan)" stroke-width="5" filter="url(#nav-subtle-glow)" />
 
                     <!-- Circuit Traces -->
                     <g stroke="#00F2FE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#nav-neon-glow)">
@@ -260,12 +265,12 @@
                         </div>
                     </div>
 
-                    <!-- Lead Host Card Component with Sharp Downscaled Tutor Photo -->
+                    <!-- Lead Host Card Component with High-Res Crisp Tutor Photo -->
                     <div class="flex items-center justify-between bg-[#10172a]/90 rounded-2xl p-3 border border-blue-500/20 shadow-inner">
                         <div class="flex items-center gap-3">
                             <div class="relative">
-                                <!-- TUTOR PHOTO -->
-                                <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Tutor%20Pic.png" alt="Sean Keannu Dandan" class="w-14 h-14 rounded-full object-cover object-top contrast-110 ring-2 ring-cyan-400/50 shadow-md">
+                                <!-- TUTOR PHOTO (High-Res Crisp Fix) -->
+                                <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Tutor%20Pic.png" alt="Sean Keannu Dandan" class="w-16 h-16 rounded-full object-cover object-center contrast-115 ring-2 ring-cyan-400/60 shadow-lg crisp-tutor-img">
                                 <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-cyan-400 rounded-full border-2 border-[#090d1a] flex items-center justify-center text-[8px] text-black font-black pointer-events-none">✓</span>
                             </div>
                             <div>
