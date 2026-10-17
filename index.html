@@ -248,13 +248,13 @@
                         </div>
                     </div>
 
-                    <!-- Lead Host Card Component with User Photo (Enlarged for Crispness) -->
+                    <!-- Lead Host Card Component with Sharp Downscaled Tutor Photo -->
                     <div class="flex items-center justify-between bg-[#10172a]/90 rounded-2xl p-3 border border-blue-500/20 shadow-inner">
                         <div class="flex items-center gap-3">
                             <div class="relative">
-                                <!-- TUTOR PHOTO -->
-                                <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Tutor%20Pic.png" alt="Sean Keannu Dandan" class="w-14 h-14 rounded-full object-cover object-top ring-2 ring-cyan-400/50 shadow-md">
-                                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-cyan-400 rounded-full border-2 border-[#090d1a] flex items-center justify-center text-[8px] text-black font-black">✓</span>
+                                <!-- TUTOR PHOTO (SHARPENED & CONTRASTED FOR SMALL DISPLAY) -->
+                                <img src="https://owmdlhotwcjzkqounzjx.supabase.co/storage/v1/object/public/receipts/Tutor%20Pic.png" alt="Sean Keannu Dandan" class="w-14 h-14 rounded-full object-cover object-top contrast-110 ring-2 ring-cyan-400/50 shadow-md">
+                                <span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-cyan-400 rounded-full border-2 border-[#090d1a] flex items-center justify-center text-[8px] text-black font-black pointer-events-none">✓</span>
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold text-white tracking-wide uppercase">Sean Keannu Dandan</h4>
@@ -388,7 +388,7 @@
         </div>
     </div>
 
-    <!-- Image Zoom Modal (Lightbox) -->
+    <!-- Image Zoom Modal (Lightbox for QR Codes only) -->
     <div id="zoomModal" class="hidden fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 z-[100] cursor-pointer" onclick="closeZoomModal()">
         <div class="relative max-w-3xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
             <button onclick="closeZoomModal()" class="absolute -top-12 right-0 text-white hover:text-cyan-400 text-3xl font-bold cursor-pointer">&times;</button>
